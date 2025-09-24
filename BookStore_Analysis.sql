@@ -48,6 +48,10 @@ COPY Orders(Order_ID, Customer_ID, Book_ID, Order_Date, Quantity, Total_Amount)
 FROM 'C:\Users\Divyesh\Desktop\SQLprj\Orders.csv' 
 CSV HEADER;
 
+---------------------------------------------------------------------------
+-- Basic Query
+---------------------------------------------------------------------------
+
 -- 1) Retrieve all books in the "Fiction" genre:
 SELECT * FROM Books
 WHERE Genre = 'Fiction';
@@ -105,6 +109,10 @@ LIMIT 1;
 -- 11) Calculate the total revenue generated from all orders:
 
 SELECT SUM(total_amount) as Revenue FROM Orders
+
+---------------------------------------------------------------------------
+-- Advance Query
+---------------------------------------------------------------------------
 
 -- 1) Retrieve the total number of books sold for each genre:
 
@@ -181,3 +189,4 @@ SELECT b.book_id, b.title, b.stock, COALESCE(SUM(o.quantity),0) AS Order_quantit
 FROM books b
 LEFT JOIN orders o ON b.book_id=o.book_id
 GROUP BY b.book_id ORDER BY b.book_id;
+
